@@ -1,0 +1,41 @@
+nav{
+    display: flex;
+    background-color: rgba(94,93,88, 0.5);
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+nav ul li{
+    margin: 0 5px;
+}
+
+nav .logo{
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+}
+
+nav .logo .center-logo{
+    color: white;
+    position: relative;
+  text-align: center;
+  color: white;
+  
+}
+
+nav .logo .center-logo div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:xx-large;
+    
+  }
+  
