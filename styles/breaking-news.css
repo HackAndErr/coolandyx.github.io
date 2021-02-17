@@ -6,6 +6,11 @@
     margin-bottom: 100px;
 }
 
+.breaking-news a{
+    text-decoration: none;
+    color: #717171;
+}
+
 .breaking-news .img-box .block{
     
     margin: 10px;
