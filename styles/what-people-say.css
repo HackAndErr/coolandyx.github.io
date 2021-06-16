@@ -34,7 +34,19 @@
 
 .what-say .control-bar img{
     margin: 10px;
+    padding: 0 2px;
+    border-radius: 100%;
 }
+
+.what-say .control-bar img{
+    cursor: pointer;
+}
+
+.what-say .control-bar img:hover{
+    border:white 2px solid;
+    padding: 0;
+}
+
 
 .what-say .control-bar .button{
     border: 1px solid white;
@@ -43,6 +55,11 @@
     padding: 10px;
     border-radius: 0;
     font-size: 20px;
+}
+
+.what-say .control-bar .button:hover{
+    border-color: rgb(24,207,171,1);
+    color: rgb(24,207,171,1);
 }
 
 

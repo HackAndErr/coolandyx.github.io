@@ -12,16 +12,29 @@
     padding: 25px;
     width: 25%;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .advantages-blocks div.dark{
     background-color: rgb(28,42,51);
 }
 
+
 .advantages-blocks div.lightgr{
     background-color: rgb(24,207,171);
+    color:rgb(28,42,51);
+}
+
+.advantages-blocks .dark:hover{
+    background-color:#1A7D6F;
     color: white;
 }
+
+.advantages-blocks .lightgr:hover{
+    background-color:#1A7D6F;
+    color: white;
+}
+
 
 .advantages-blocks div i{
     margin-bottom: 20px;

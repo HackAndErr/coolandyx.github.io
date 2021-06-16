@@ -1,28 +1,37 @@
-nav{
+.nav-main{
     display: flex;
     background-color: rgba(94,93,88, 0.5);
     justify-content: space-around;
     align-items: center;
 }
 
-nav ul{
+.nav-main ul{
     display: flex;
     list-style-type: none;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    
 }
 
-nav ul li{
+.nav-main ul li{
     margin: 0 5px;
 }
 
-nav .logo{
+.nav-main a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-main a:hover{
+    color:rgba(226, 226, 226, 0.5);
+}
+
+.nav-main .logo{
     display: flex;
     align-items: center;
     font-size: x-large;
 }
 
-nav .logo .center-logo{
+.nav-main .logo .center-logo{
     color: white;
     position: relative;
   text-align: center;
@@ -30,7 +39,7 @@ nav .logo .center-logo{
   
 }
 
-nav .logo .center-logo div{
+.nav-main .logo .center-logo div{
     position: absolute;
     top: 50%;
     left: 50%;
