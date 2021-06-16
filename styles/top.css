@@ -30,6 +30,10 @@
     margin-top: 5vh;
 }
 
+.buttons a{
+    text-decoration: none;
+}
+
 .buttons div{
     margin: 1vw;
 }

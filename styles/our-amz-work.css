@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+.our-amazing-work .buttons button:hover{
+    border-color: black;
+}
+
 .our-amazing-work .buttons .active{
     border: 1px solid rgb(24,207,171);
     color: rgb(24,207,171);
