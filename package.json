@@ -18,9 +18,8 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
     "sass": "^1.35.1"
   },
-  "dependencies": {
-    "gulp-watch": "^5.0.1"
-  }
+  "dependencies": {}
 }

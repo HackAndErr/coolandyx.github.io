@@ -17,13 +17,13 @@ gulp.task('cleanDist', function () {
 });
 
 gulp.task('scssToCss', function(){    
-	return gulp.src('src/scss/**/*.scss')                                                                                         
+	return gulp.src('src/scss/style.scss')                                                                                         
 	.pipe(sass())                                                                                                       
-	.pipe(gulp.dest( 'dist/css' ) )                                               
+	.pipe(gulp.dest( 'dist' ) )                                               
 });    
 
 gulp.task('concatinationCss', function() {
-    return gulp.src('dist/css/*.css')
+    return gulp.src('dist/style.css')
     .pipe(concat('styles.min.css'))
     .pipe(gulp.dest('dist/'));
 });
@@ -55,7 +55,7 @@ gulp.task('minifyJs', async function() {
 });
 
 gulp.task('cleanCss', function(){
-    return gulp.src('dist/css', {read: false})
+    return gulp.src('dist/style.css', {read: false})
         .pipe(clean());
 });
 
