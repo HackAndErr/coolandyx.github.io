@@ -1,0 +1,32 @@
+@import "mixins";
+
+footer{
+    @include flex-center;
+    flex-direction: column;
+    background-color: black;
+    padding: 2vw;
+}
+
+.footer__title{
+    color: white;
+    text-transform: uppercase;
+   
+}
+
+.footer__text{
+    color: #B9B9B9;
+    padding: 0 0 20px 0;
+    text-align: center;
+}
+
+.footer__social_media span{
+    border-style: solid;
+    border-width: 1px;
+    padding: 7px;
+    border-radius: 100%;
+}
+
+.footer__social_media span:hover{
+    border-color: white;
+    color: white;
+}
