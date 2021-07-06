@@ -1,0 +1,61 @@
+.people-talking{
+    background-image: url("../dist/images/people-talking/people-talking-back.png");
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.people-talking h1{
+    font-size: 48px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    padding-top: 10vh;
+}
+
+.people-talking__wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+}
+
+.people-talking__block{
+    @include flex-center;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+
+.people-talking__block i{
+    color: white;
+    font-style: italic;
+    line-height: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+.people-talking__bottom-text{
+    color: #A291A5;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px;
+}
+
+@media (min-width: 481px){
+    .people-talking__block{
+        width: 40vw;
+    }
+    .people-talking__bottom-text{
+        width:90%
+    }
+}
+
+@media (min-width: 993px){
+    .people-talking__block{
+        width: 25vw;
+    }
+    .people-talking__bottom-text{
+        width: 60%;
+    }
+}
