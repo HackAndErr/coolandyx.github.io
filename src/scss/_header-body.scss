@@ -1,0 +1,21 @@
+@import "variables";
+
+.header__desc, .header__title, .header__version{
+    text-align: center;
+}
+
+.header__title{
+    color: white;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.header__desc{
+    color: $main-text-color;
+    font-weight: 400;
+}
+
+.header__version{
+    color: $secondary-text-color;
+    text-transform: uppercase;
+}
