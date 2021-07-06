@@ -1,6 +1,7 @@
 @import "variables";
 
 .header__desc, .header__title, .header__version{
+    padding: 10px 0;
     text-align: center;
 }
 
@@ -8,6 +9,7 @@
     color: white;
     font-weight: 700;
     font-size: 48px;
+    margin-top: 10vh;
 }
 
 .header__desc{
