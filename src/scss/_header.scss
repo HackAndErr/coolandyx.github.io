@@ -1,0 +1,31 @@
+header{
+    background-image: url("../dist/images/header/header-back.png");
+    background-position-x: center;
+    height: 718px;
+    position: relative;
+}
+
+header .btn{
+    background-color: $main-text-color;
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+header .btn:hover{
+    background-color: white;
+    color: $main-text-color;
+    border-color: $main-text-color;
+}
+
+header .btn.download{
+    font-size: 18px;
+    width: 90%;
+    left: 5%;
+    padding: 10px;
+    position: absolute;
+    top: 100%;
+    transform: translate(0, -50%);
+
+}
