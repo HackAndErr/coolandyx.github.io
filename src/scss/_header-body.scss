@@ -1,5 +1,9 @@
 @import "variables";
 
+.header__body-wrap{
+    margin-top: 5vh;
+}
+
 .header__desc, .header__title, .header__version{
     padding: 10px 0;
     text-align: center;
@@ -9,7 +13,6 @@
     color: white;
     font-weight: 700;
     font-size: 48px;
-    margin-top: 10vh;
 }
 
 .header__desc{
@@ -20,4 +23,36 @@
 .header__version{
     color: $secondary-text-color;
     text-transform: uppercase;
+}
+
+@media (min-width: 481px){
+    .header__body-wrap{
+        margin-top: 1vh;
+    }
+
+    .header__title{
+        font-size: 72px;
+    }
+    .header__desc{
+        font-size: 24px;
+    }
+    .header__version{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 993px){
+    .header__body-wrap{
+        margin-top: 3vh;
+    }
+
+    .header__title{
+        font-size: 82px;
+    }
+    .header__desc{
+        font-size: 30px;
+    }
+    .header__version{
+        font-size: 16px;
+    }
 }

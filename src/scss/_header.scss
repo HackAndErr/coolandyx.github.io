@@ -1,6 +1,8 @@
 header{
     background-image: url("../dist/images/header/header-back.png");
+    background-size: cover;
     background-position-x: center;
+    background-position-y: center;
     height: 718px;
     position: relative;
 }
@@ -29,4 +31,12 @@ header .btn.download{
     top: 100%;
     transform: translate(0, -50%);
 
+}
+
+@media (min-width: 481px){
+    header .btn.download{
+        width: 390px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
