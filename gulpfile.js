@@ -70,7 +70,8 @@ gulp.task('browserSync', function() {
 
   gulp.task('stream', function () {
     gulp.watch(['src/scss/*.scss'], gulp.series('scssToCss', 'concatinationCss', 'minifyCss', 'cleanCss'));
-    gulp.watch(['src/js/*.js'], gulp.series('concatinationJs', 'minifyJs'));       
+    gulp.watch(['src/js/*.js'], gulp.series('concatinationJs', 'minifyJs'));
+    gulp.watch(['src/img'], gulp.series('imgMin'));
 });
 
 gulp.task('build', gulp.series('cleanDist', 'scssToCss', 'concatinationCss', 'concatinationJs', 'minifyCss', 'minifyJs', 'imgMin', 'cleanCss'));
