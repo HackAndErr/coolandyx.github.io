@@ -1,5 +1,5 @@
 # coolandyx.github.io
-Step-проект "Forkio"
+Step-проект "Forkio".
 Использованные технологии: HTML, CSS, JS, Gulp (SASS и другие модули).
 Участники проекта: Андрей Бабкин (Cool_Andy) и Андрей Саенко (Andrey Saenko).
 Саенко Андрей выполнял Задание для студента №2.
