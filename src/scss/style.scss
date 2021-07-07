@@ -8,3 +8,8 @@
 @import "mixins2";
 @import "people-talking";
 @import "fork-subscription";
+
+body{
+  max-width: 1200px;
+  margin: 0 auto;
+}
