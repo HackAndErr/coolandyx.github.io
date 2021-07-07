@@ -58,11 +58,17 @@
 
 @media screen and (min-width: 993px){
   .you-get {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(0,1fr);
+
     background-color: #F4F4F4;
-    background-clip: border-box;
+
+    &__width{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(0,1fr);
+      background-clip: border-box;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     &__heading{
       margin: 0;
