@@ -1,6 +1,7 @@
 @import "mixins";
 
-.header__top{
+.header{
+    &__top{
     @include flex-between;
     background-color: #27262A;
     padding: 20px 10px;
@@ -8,14 +9,14 @@
     
 }
 
-.header__top .btn{
+    &__top .btn{
     font-size: 15px;
     font-weight: 700;
     padding: 10px 30px;
 
 }
 
-.header__top nav{
+    &__top nav{
     position: absolute;
     background-color:#333333;
     width: 95%;
@@ -26,13 +27,13 @@
     overflow: hidden;
 }
 
-.header__top nav.show{
+    &__top nav.show{
     height: 272px;
 }
 
 
 
-.header__top nav a{
+    &__top nav a{
     display: block;
     color: white;
     padding: 20px 30px;
@@ -41,7 +42,7 @@
     position: relative;
 }
 
-.header__top nav a:active::before{
+    &__top nav a:active::before{
     content: "";
     position: absolute;
     left: 0;
@@ -51,11 +52,11 @@
     height: 70%;
 }
 
-.header__top nav a:active{
+    &__top nav a:active{
     color: $main-text-color;
 }
 
-.header__top .active-border{
+    &__top .active-border{
     width: 10px;
     height: 70%;
     position: absolute;
@@ -63,6 +64,19 @@
     left: 0;
     background-color: $main-text-color;
     z-index: 2;
+}
+
+    &__logo{
+    @include flex-center;
+}
+
+    &__forkio-title{
+    color: $main-text-color;
+    padding: 5px;
+    font-family: "Lato", sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+}
 }
 
 .menu-btn{
@@ -74,17 +88,7 @@
     height: 42px;
 }
 
-.header__logo{
-    @include flex-center;
-}
 
-.header__forkio-title{
-    color: $main-text-color;
-    padding: 5px;
-    font-family: "Lato", sans-serif;
-    text-transform: uppercase;
-    font-size: 24px;
-}
 
 @media (min-width: 481px){
 

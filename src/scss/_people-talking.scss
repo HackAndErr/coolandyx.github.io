@@ -13,24 +13,25 @@
     padding-top: 10vh;
 }
 
-.people-talking__wrap{
+.people-talking{
+    &__wrap{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px 10px;
 }
 
-.people-talking__block{
+    &__block{
     @include flex-center;
     flex-direction: column;
     padding: 30px 0;
 }
 
-.people-talking__block img{
+    &__block img{
     cursor: pointer;
 }
 
-.people-talking__block i{
+    &__block i{
     color: white;
     font-style: italic;
     line-height: 24px;
@@ -38,16 +39,17 @@
     text-align: center;
 }
 
-.people-talking__bottom-text{
+    &__bottom-text{
     color: #A291A5;
     margin: 0 auto;
     text-align: center;
-    padding: 5px;
+    padding: 15px 5px;
+}
 }
 
 @media (min-width: 481px){
     .people-talking__block{
-        width: 40vw;
+        width: 50%;
     }
     .people-talking__bottom-text{
         width:90%
@@ -56,9 +58,10 @@
 
 @media (min-width: 993px){
     .people-talking__block{
-        width: 25vw;
+        width: 33%;
     }
     .people-talking__bottom-text{
         width: 60%;
     }
 }
+

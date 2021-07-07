@@ -1,5 +1,13 @@
 @import "variables2";
 @import "mixins2";
+@import "variables";
+
+.unlimited-period{
+  text-align: center;
+  margin-top: 35px;
+  font-size: 14px;
+  color: $secondary-text-color;
+}
 
 .revolutionary{
   font-family: $font-family-pages;

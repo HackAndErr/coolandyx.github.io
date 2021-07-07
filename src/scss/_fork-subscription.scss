@@ -113,6 +113,10 @@
     &__span{
       display: inline;
     }
+
+    &__heading{
+      font-size: 42px;
+    }
   }
   .subscription-blocks{
     display: flex;
@@ -130,6 +134,9 @@
 }
 
 @media screen and (min-width: 993px){
+  .fork-subscription__heading{
+    font-size: 48px;
+  }
   .subscription-blocks{
     display: flex;
   }
