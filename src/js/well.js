@@ -11,8 +11,11 @@ class Modal {
     }
 
     hide(event){
-        if(event.target === this.$el)
-        this.$el.style.display = "none";
+        if(event.target === this.$el){this.$el.style.display = "none"}
+    }
+
+    simpleHide(){
+        this.$el.style.display = "none"
     }
 
     show(){
@@ -25,7 +28,7 @@ class Modal {
 }
 
 const login = new Modal("#loginWindow");
-document.querySelector(".login_btn").addEventListener("click", () => login.show());
+document.querySelector("#login_btn").addEventListener("click", () => login.show());
 
 const logInField = document.querySelector("input[name='login']"); 
 const passwordField = document.querySelector("input[name='password']");
@@ -39,7 +42,18 @@ document.querySelector("#log_in").addEventListener("click", async function(){
   body: JSON.stringify({ email: logInField.value, password: passwordField.value })
 })
   .then(response => response.text())
-  .then(token => {console.log(token);
+  .then(token => {
+    if(token.length !== 36 || token[8] !== "-" || token[13] !== "-" || token[18] !== "-" || token[23] !== "-"){
+        return alert("Неверный логин или пароль"); 
+    }
+        login.simpleHide();
+        document.querySelector("input[name='login']").value = document.querySelector("input[name='password']").value = "";
+        
+        document.querySelector("#login_btn").style.display = "none";
+        const createVisit = document.createElement("button");
+        createVisit.innerHTML = "Создать визит";
+        createVisit.classList.add("nav__btn");
+        document.querySelector("nav").append(createVisit);
     
 })
 
