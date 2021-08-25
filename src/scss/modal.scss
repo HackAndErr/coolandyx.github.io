@@ -1,0 +1,52 @@
+.modalWindow{
+    width : 100%;
+    height : 100%;
+    background-color : rgba(0, 0, 0, 0.7);
+    position : absolute;
+    top : 0; 
+    left : 0;
+    display : none;
+    justify-content: center;
+    align-items: center;
+         
+    .innerModal{
+         display : flex;
+         flex-direction : column;
+         background-color : $main-theme-color;
+         padding : 40px;
+         border-radius : 8px;
+         width : 40%;
+         justify-content : center;
+         align-items :center;
+         box-shadow: black 10px 10px 20px;
+
+         h1{
+             font-size: 30px;
+             font-weight: 700;
+             color: white;
+         }
+
+         button{
+             padding: 10px;
+             color: white;
+             background-color: $secondary-theme-color;
+             font-size: 20px;
+             font-weight: 600;
+        
+         }
+
+         button:hover{
+            color: $secondary-theme-color;
+            background-color: white;
+         }
+
+         input{
+             padding: 5px;
+         }
+
+         input, button{
+             width: 70%;
+             margin: 20px;
+         }
+    }
+}

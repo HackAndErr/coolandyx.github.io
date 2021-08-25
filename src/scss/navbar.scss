@@ -1,0 +1,37 @@
+header{
+
+    nav{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $main-bg-color;
+        
+
+        a, .login_btn{
+            margin: 20px 50px;
+            
+        }
+
+        img{
+            width: 64px;
+        }
+
+        .login_btn{
+            padding: 15px 25px;
+            background-color: $main-theme-color;
+            border-radius: 8px;
+            border: 3px solid rgba(0, 0, 0, 0.788);
+            border-top: 0;
+            color: white;
+            font-weight: 700;
+            font-size: 25px;
+            box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 20px;
+        }
+
+        .login_btn:hover{
+            color: $secondary-theme-color;
+            background-color: white;
+        }
+    }
+}
