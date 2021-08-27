@@ -31,7 +31,7 @@ class Visit {
     constructor(options){
         this.purpose = "<input name='purpose' placeholder='Цель визита'>",
         this.desc = "<input name='desc' placeholder='Краткое описание визита'>",
-        this.priority = `Срочность визита: <select id='visitPriority' placeholder="Срочность визита">
+        this.priority = `Срочность визита: <select id='visitPriority' name="visitPriority" placeholder="Срочность визита">
         <option name="priority" value="common">Обычная</option>
         <option name="priority" value="immediate">Приоритетная</option>
         <option name="priority" value="superimmediate">Неотложная</option>
@@ -86,7 +86,7 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
     }
 
     //Если формат ключа правильный:
-        let personalToken = token;
+        
         login.simpleHide();
         document.querySelector("input[name='login']").value = document.querySelector("input[name='password']").value = "";
         
@@ -99,15 +99,14 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
 
         createVisit.addEventListener("click", async function(){  //Создаём модальное окно "Создать визит"
             const visit = new Modal("#visitWindow");
-            const visitCardiologist = new VisitCardiologist();
-            const visitDentist = new VisitDentist();
-            const visitTherapist = new VisitTherapist();
+            const visitCardiologist = new VisitCardiologist;
+            const visitDentist = new VisitDentist;
+            const visitTherapist = new VisitTherapist;
 
             function reloadSelect(doctor){
                 const visitWindow = document.querySelector("#visitWindow");
                 visitWindow.querySelector(".selectVisitDetails").innerHTML = "";
                 for(key in visitCardiologist){
-                    console.log(doctor[key])
                     visitWindow.querySelector(".selectVisitDetails").innerHTML += doctor[key]
                 }
             }
@@ -115,7 +114,6 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
             reloadSelect(visitCardiologist);
             
             document.querySelector("#selectVisit").addEventListener("click", () =>{
-                console.log(document.querySelector("#selectVisit").value);
                 switch (document.querySelector("#selectVisit").value) {
                     case "Визит к кардиологу": 
                         reloadSelect(visitCardiologist);
@@ -134,6 +132,30 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
                 }
             })
             visit.show();
+
+            
+
+            document.querySelector("#createVisit").addEventListener("click", () =>{
+                let dataToSend = {};
+            for(key of document.querySelector(".selectVisitDetails").children){
+                dataToSend[key.name] = key.value
+            }
+                fetch("https://ajax.test-danit.com/api/v2/cards", {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(dataToSend)
+                })
+                .then(response => response.json())
+                .then(response => {console.log(response);
+                visit.simpleHide();
+                let visitCard = document.createElement("div");
+                document.body.append(visitCard);
+                
+            })
+                })
         })
 })
 
