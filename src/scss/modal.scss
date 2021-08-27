@@ -40,13 +40,19 @@
             background-color: white;
          }
 
-         input{
+         input, select{
              padding: 5px;
          }
 
-         input, button{
+         input, button, select{
              width: 70%;
-             margin: 20px;
+             margin: 5px;
+         }
+
+         .selectVisitDetails{
+             display: flex;
+             flex-direction: column;
+            justify-content: center;
          }
     }
 }
