@@ -148,12 +148,22 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
                 },
                 body: JSON.stringify(dataToSend)
                 })
-                .then(response => response.json())
-                .then(response => {console.log(response);
-                visit.simpleHide();
-                let visitCard = document.createElement("div");
-                document.body.append(visitCard);
-                
+                    .then(response => response.json())
+                    .then(response => {
+                        for (let i in response) {
+                            if (response[i].length !==0 ){
+                                let domId = document.getElementById("new_cards")
+                                domId.insertAdjacentHTML("afterbegin" ,
+                                    `<li class="text-in-cards"> ${response[i] + '\n'}</li>`);
+                            }
+                        }
+                        visit.simpleHide();
+                // .then(response => response.json())
+                // .then(response => {console.log(response);
+                // visit.simpleHide();
+                // let visitCard = document.createElement("div");
+                // document.body.append(visitCard);
+                // console.log(visitCard)
             })
                 })
         })
