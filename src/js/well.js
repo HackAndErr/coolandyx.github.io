@@ -65,6 +65,11 @@ class VisitTherapist extends Visit{
 }
 
 const login = new Modal("#loginWindow");
+
+// переменные для глобально использования
+let visit
+let saveIdCards
+
 document.querySelector("#login_btn").addEventListener("click", () => login.show());
 
 const logInField = document.querySelector("input[name='login']"); 
@@ -80,16 +85,17 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
 })
   .then(response => response.text())
   .then(token => {
+
     if(token.length !== 36 || token[8] !== "-" || token[13] !== "-" || token[18] !== "-" || token[23] !== "-"){ //Верификация ключа
-        
+
         return alert("Неверный логин или пароль"); 
     }
 
     //Если формат ключа правильный:
-        
+
         login.simpleHide();
         document.querySelector("input[name='login']").value = document.querySelector("input[name='password']").value = "";
-        
+
         document.querySelector("#login_btn").style.display = "none";
         const createVisit = document.createElement("button");
         createVisit.innerHTML = "Создать визит";
@@ -98,7 +104,7 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
 
 
         createVisit.addEventListener("click", async function(){  //Создаём модальное окно "Создать визит"
-            const visit = new Modal("#visitWindow");
+            visit = new Modal("#visitWindow"); //Саенко(с)
             const visitCardiologist = new VisitCardiologist;
             const visitDentist = new VisitDentist;
             const visitTherapist = new VisitTherapist;
@@ -133,42 +139,93 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
             })
             visit.show();
 
-            
-
-            document.querySelector("#createVisit").addEventListener("click", () =>{
-                let dataToSend = {};
-            for(key of document.querySelector(".selectVisitDetails").children){
-                dataToSend[key.name] = key.value
-            }
-                fetch("https://ajax.test-danit.com/api/v2/cards", {
-                    method: 'POST',
-                    headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(dataToSend)
-                })
-                    .then(response => response.json())
-                    .then(response => {
-                        for (let i in response) {
-                            if (response[i].length !==0 ){
-                                let domId = document.getElementById("new_cards")
-                                domId.insertAdjacentHTML("afterbegin" ,
-                                    `<li class="text-in-cards"> ${response[i] + '\n'}</li>`);
-                            }
-                        }
-                        visit.simpleHide();
-                // .then(response => response.json())
-                // .then(response => {console.log(response);
-                // visit.simpleHide();
-                // let visitCard = document.createElement("div");
-                // document.body.append(visitCard);
-                // console.log(visitCard)
-            })
-                })
         })
+
+      // Получение и рендер карточки
+      document.querySelector("#createVisit").addEventListener("click", async function (){
+          let dataToSend = {};
+          createDivCards()
+          for(key of document.querySelector(".selectVisitDetails").children){
+              dataToSend[key.name] = key.value
+          }
+          fetch("https://ajax.test-danit.com/api/v2/cards", {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify(dataToSend)
+          })
+              .then(response => response.json())
+              .then(response => {
+                  saveIdCards = response.id
+
+                  for (let i in response) {
+                      if (response[i].length !==0 ){
+
+                          let wrapperCards = document.querySelectorAll(".wrapper-cards")
+                          const el = wrapperCards[wrapperCards.length-1]
+                          el.insertAdjacentHTML(
+                              "beforeend" ,
+                              `<li class="text-in-cards"> ${i + " " + ":" + response[i] + '\n'}</li>`);
+                      }
+                  }
+                  visit.simpleHide();
+              })
+          function createDivCards () {
+              let divForCard = document.createElement("div");
+              divForCard.classList.add("wrapper-cards");
+              let domId = document.getElementById("new_cards");
+              domId.append(divForCard);
+          }
+      })
 })
+})
+function createDeleteButton (){
+
+}
+document.querySelector(".wrapper-cards").addEventListener("click" , ()=>{
 
 })
-
+// Получение и рендер карточки
+// document.querySelector("#createVisit").addEventListener("click", async function (){
+//     let dataToSend = {};
+//     createDivCards()
+//     for(key of document.querySelector(".selectVisitDetails").children){
+//         dataToSend[key.name] = key.value
+//     }
+//     fetch("https://ajax.test-danit.com/api/v2/cards", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         },
+//         body: JSON.stringify(dataToSend)
+//     })
+//         .then(response => response.json())
+//         .then(response => {
+//             // let wrapperCards = document.querySelectorAll(".wrapper-cards")
+//             // const el = wrapperCards[wrapperCards.length-1]
+//             // console.log(el)
+//             for (let i in response) {
+//                 if (response[i].length !==0 ){
+//
+//             let wrapperCards = document.querySelectorAll(".wrapper-cards")
+//             const el = wrapperCards[wrapperCards.length-1]
+//             wrapperCards.insertAdjacentHTML(
+//                 "beforeend" ,
+//                 `<li class="text-in-cards"> ${i + response[i] + '\n'}</li>`);
+//             console.log(el)
+//                 }
+//             }
+//             visit.simpleHide();
+//         })
+//     function createDivCards () {
+//         let divForCard = document.createElement("div");
+//         divForCard.classList.add("wrapper-cards");
+//         let domId = document.getElementById("new_cards");
+//         domId.append(divForCard);
+//     }
+//     console.log(token)
+// })
 
