@@ -1,5 +1,9 @@
 .cards{
   display: flex;
+  flex-wrap: wrap;
+}
+.cardsContainer{
+  width: 100%;
 }
 .wrapper-cards{
   margin: 50px;
@@ -7,17 +11,33 @@
   color: #000;
   background: #eaffb9;
   display: block;
-  height: 10em;
-  width: 10em;
+  height: 16em;
+  width: 14em;
   padding: 1em;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
-
-  transition: transform .15s linear;
-  position:relative;
-  z-index:5;
+  transition: 0.3s;
 }
 .text-in-cards{
   line-height: 18px;
   text-align: center;
   list-style-type: none;
+}
+.text-in-cards :first-child{
+  margin-top: 50px;
+}
+.closeBtn {
+  margin-left: 15px;
+  font-weight: bold;
+  position: relative;
+  left: 87%;
+  top: -6px;
+  color: #808080;
+  font-size: 26px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closeBtn:hover {
+  color: black;
 }

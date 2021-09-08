@@ -68,7 +68,7 @@ const login = new Modal("#loginWindow");
 
 // переменные для глобально использования
 let visit
-let saveIdCards
+let saveIdCards ;
 
 document.querySelector("#login_btn").addEventListener("click", () => login.show());
 
@@ -141,10 +141,10 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
 
         })
 
-      // Получение и рендер карточки
+      // Отправка и рендер карточки
       document.querySelector("#createVisit").addEventListener("click", async function (){
           let dataToSend = {};
-          createDivCards()
+
           for(key of document.querySelector(".selectVisitDetails").children){
               dataToSend[key.name] = key.value
           }
@@ -158,7 +158,10 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
           })
               .then(response => response.json())
               .then(response => {
-                  saveIdCards = response.id
+                  saveIdCards = response.id;
+
+                  createDivCards()
+                  clickOnCloseBtn(token);
 
                   for (let i in response) {
                       if (response[i].length !==0 ){
@@ -172,60 +175,44 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
                   }
                   visit.simpleHide();
               })
-          function createDivCards () {
-              let divForCard = document.createElement("div");
-              divForCard.classList.add("wrapper-cards");
-              let domId = document.getElementById("new_cards");
-              domId.append(divForCard);
-          }
       })
 })
 })
-function createDeleteButton (){
+// функция создания карточки
+function createDivCards () {
+    let divForCard = document.createElement("div");
+    divForCard.classList.add("wrapper-cards");
+    divForCard.id = `${saveIdCards}`;
 
+    let domId = document.getElementById("new_cards");
+    domId.append(divForCard);
+
+    let deleteButton = document.querySelectorAll('.wrapper-cards');
+    const el = deleteButton[deleteButton.length-1]
+    el.insertAdjacentHTML(
+        "beforeend" ,
+        `<span class="closeBtn" >&times;</span>`)
 }
-document.querySelector(".wrapper-cards").addEventListener("click" , ()=>{
 
-})
-// Получение и рендер карточки
-// document.querySelector("#createVisit").addEventListener("click", async function (){
-//     let dataToSend = {};
-//     createDivCards()
-//     for(key of document.querySelector(".selectVisitDetails").children){
-//         dataToSend[key.name] = key.value
-//     }
-//     fetch("https://ajax.test-danit.com/api/v2/cards", {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//         },
-//         body: JSON.stringify(dataToSend)
-//     })
-//         .then(response => response.json())
-//         .then(response => {
-//             // let wrapperCards = document.querySelectorAll(".wrapper-cards")
-//             // const el = wrapperCards[wrapperCards.length-1]
-//             // console.log(el)
-//             for (let i in response) {
-//                 if (response[i].length !==0 ){
-//
-//             let wrapperCards = document.querySelectorAll(".wrapper-cards")
-//             const el = wrapperCards[wrapperCards.length-1]
-//             wrapperCards.insertAdjacentHTML(
-//                 "beforeend" ,
-//                 `<li class="text-in-cards"> ${i + response[i] + '\n'}</li>`);
-//             console.log(el)
-//                 }
-//             }
-//             visit.simpleHide();
-//         })
-//     function createDivCards () {
-//         let divForCard = document.createElement("div");
-//         divForCard.classList.add("wrapper-cards");
-//         let domId = document.getElementById("new_cards");
-//         domId.append(divForCard);
-//     }
-//     console.log(token)
-// })
+// функция удаления карточки
+let clearBtn = document.getElementsByClassName("closeBtn")
+function clickOnCloseBtn (token){
+
+        for (let i of clearBtn){
+        i.addEventListener("click", async (event) => {
+            let target = event.target;
+            let catchId = target.parentElement.id
+            let idToNumber = Number(catchId);
+            let getId = document.getElementById(catchId)
+
+                fetch(`https://ajax.test-danit.com/api/v2/cards/${idToNumber}`,{
+                    method: 'DELETE',
+                    headers: {'Authorization':`Bearer ${token}`}
+                })
+                .then(r =>{
+                    getId.style.display='none'
+                });
+        });
+}}
+
 
