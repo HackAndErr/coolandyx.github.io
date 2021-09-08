@@ -175,9 +175,12 @@ document.querySelector("#log_in").addEventListener("click", async function(){ //
                   }
                   visit.simpleHide();
               })
+
       })
+
 })
 })
+
 // функция создания карточки
 function createDivCards () {
     let divForCard = document.createElement("div");
@@ -210,7 +213,7 @@ function clickOnCloseBtn (token){
                     headers: {'Authorization':`Bearer ${token}`}
                 })
                 .then(r =>{
-                    getId.style.display='none'
+                    getId.remove();
                 });
         });
 }}

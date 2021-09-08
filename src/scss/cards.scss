@@ -6,24 +6,22 @@
   width: 100%;
 }
 .wrapper-cards{
+  border-radius: 5px;
   margin: 50px;
   text-decoration: none;
   color: #000;
-  background: #eaffb9;
+  background: #eaffb9eb;
   display: block;
-  height: 16em;
-  width: 14em;
+  height: 25em;
+  width: 22em;
   padding: 1em;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
-  transition: 0.3s;
 }
 .text-in-cards{
-  line-height: 18px;
-  text-align: center;
+  font-size: 20px;
+  color: #313131;
+  line-height: 40px;
   list-style-type: none;
-}
-.text-in-cards :first-child{
-  margin-top: 50px;
 }
 .closeBtn {
   margin-left: 15px;
